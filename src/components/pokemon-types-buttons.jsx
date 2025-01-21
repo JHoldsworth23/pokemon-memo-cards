@@ -5,7 +5,7 @@ export default function PokemonTypeButtons({ callback, types }) {
         <>
             {types.map((pokemonType, idx) => 
                 <button key={idx} onClick={() => callback(pokemonType)}>
-                    {pokemonType ? pokemonType : 'All'}
+                    {pokemonType ? pokemonType : 'All Types'}
                 </button>
             )}
         </>
