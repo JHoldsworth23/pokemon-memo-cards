@@ -4,14 +4,15 @@ import PokemonTypeButtons from './components/pokemon-types-buttons';
 import './App.css';
 
 const apiKey = import.meta.env.POKEMON_API_KEY;
-const POKEMONTYPES = ['', 'Fire', 'Water', 'Grass', 'Electric', 'Dragon', 'Rock', 'Ghost'];
+const POKEMONTYPES = ['', 'Fire', 'Water', 'Grass', 'Lightning', 'Dragon', 'Fighting', 'Darkness', 'Metal', 'Psychic'];
 
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
   const [type, setType] = useState('');
 
   useEffect(() => {
-    fetch('https://api.pokemontcg.io/v2/cards', {
+    const query = type ? `?q=types:${type}` : '';
+    fetch(`https://api.pokemontcg.io/v2/cards${query}`, {
       headers: {
         'X-Api-Key': apiKey,
       }
@@ -26,7 +27,7 @@ export default function App() {
         setPokemon(pokemonData.slice(0, 10));
       })
       .catch(err => console.log(err.message));
-  })
+  }, [type]);
   // array dependency - type
   // use type variable to fetch a data from API request - useEffect
 
