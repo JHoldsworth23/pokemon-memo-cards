@@ -4,7 +4,9 @@ useMemo hook - when to use it or not use it?
 
 Difficulty - Easy (10 Cards), Normal (18 cards), Hard (25 cards);
 
-Fetching a data - array dependency on pokemon types, shuffle array randomly and slice from index 0 to index (amount of cards based on difficulty) - 1;
+Fetching a data - array dependency on pokemon types, 
+                  shuffle array randomly 
+                  and slice from index 0 to index (amount of cards based on difficulty);
 
-Buttons to select types of pokémon - All, Fire, Water, Grass, Electric, Dragon, Rock, Ghost;
+Buttons to select types of pokémon - All, Fire, Water, Grass, Lightning, Dragon, Fighting, Psychic, Darkness, Metal;
 Add icons (pokemon types) besides the text - import all icons;
