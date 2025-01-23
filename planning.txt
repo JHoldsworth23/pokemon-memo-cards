@@ -8,5 +8,9 @@ Fetching a data - array dependency on pokemon types,
                   shuffle array randomly 
                   and slice from index 0 to index (amount of cards based on difficulty);
 
+Click function on Pokemon Cards - check if it has not been clicked before (use array and include method)
+                                  if pokemon value exist in the array, game over and reset the array to be empty
+                                  if pokemon does not exist in the array, push the value and carry on 
+
 Buttons to select types of pokémon - All, Fire, Water, Grass, Lightning, Dragon, Fighting, Psychic, Darkness, Metal;
 Add icons (pokemon types) besides the text - import all icons;
