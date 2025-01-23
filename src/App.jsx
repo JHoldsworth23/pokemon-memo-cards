@@ -6,6 +6,13 @@ import './App.css';
 const apiKey = import.meta.env.POKEMON_API_KEY;
 const POKEMONTYPES = ['', 'Fire', 'Water', 'Grass', 'Lightning', 'Dragon', 'Fighting', 'Darkness', 'Metal', 'Psychic'];
 
+function shuffle(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * i);
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+}
+
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
   const [type, setType] = useState('');
@@ -21,6 +28,7 @@ export default function App() {
       .then(data => {
         console.log("Fetching a data...");
         const pokemonData = data.data;
+        shuffle(pokemonData)
         // shuffle pokemon array and slice
         // setPokemon(pokemonData);
         // temporary display for 10 cards
