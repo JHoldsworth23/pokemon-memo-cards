@@ -1,7 +1,7 @@
-export default function PokemonCards(prop) {
+export default function PokemonCards({ cards, callback }) {
     return (
-        prop.array.map(card => 
-            <div key={card.id} onClick={null}>
+        cards.map(card => 
+            <div key={card.id} onClick={() => callback(card.id)}>
                 <img src={card.images.small} alt={card.name} />
             </div>
         )

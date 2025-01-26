@@ -6,6 +6,7 @@ import './App.css';
 
 const apiKey = import.meta.env.POKEMON_API_KEY;
 const POKEMONTYPES = ['', 'Fire', 'Water', 'Grass', 'Lightning', 'Dragon', 'Fighting', 'Darkness', 'Metal', 'Psychic'];
+let POKEMONCARDS = [];
 
 function shuffleAndSlice(arr, difficulty) {
   let cardNum = difficulty === 'easy' ? 10 : difficulty === 'normal' ? 18 : 25;
@@ -16,6 +17,15 @@ function shuffleAndSlice(arr, difficulty) {
   }
 
   return arr.slice(0, cardNum);
+}
+
+function checkPokemonCard(pokemonId) {
+  if (!POKEMONCARDS.includes(pokemonId)) {
+    POKEMONCARDS.push(pokemonId);
+    console.log(POKEMONCARDS);
+  } else {
+    console.log('GAME OVER');
+  }
 }
 
 export default function App() {
@@ -40,13 +50,11 @@ export default function App() {
       })
       .catch(err => console.log(err.message));
   }, [type, difficulty]);
-  // array dependency - type and difficulty
-  // use type variable to fetch a data from API request - useEffect
 
   return (
     <>
       <h1>Pokémon Memo Cards</h1>
-      <PokemonCards array={pokemon} />
+      <PokemonCards cards={pokemon} callback={checkPokemonCard}/>
       <DifficultyButtons callback={setDifficulty} />
       <p>{type}</p>
       <PokemonTypeButtons callback={setType} types={POKEMONTYPES} />
