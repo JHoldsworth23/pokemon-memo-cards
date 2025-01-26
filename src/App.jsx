@@ -8,6 +8,7 @@ import './App.css';
 const apiKey = import.meta.env.POKEMON_API_KEY;
 const POKEMONTYPES = ['', 'Fire', 'Water', 'Grass', 'Lightning', 'Dragon', 'Fighting', 'Darkness', 'Metal', 'Psychic'];
 let POKEMONCARDS = [];
+// make a global variable for gameplay - checking if the game is on or over
 
 function checkPokemonCard(pokemonId) {
   if (!POKEMONCARDS.includes(pokemonId)) {
@@ -44,6 +45,7 @@ export default function App() {
   return (
     <>
       <h1>Pokémon Memo Cards</h1>
+      <p>Score: {`${POKEMONCARDS.length} / ${pokemon.length}`}</p>
       <div className='pokemon-cards'>
         <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} setState={setPokemon}/>
       </div>
