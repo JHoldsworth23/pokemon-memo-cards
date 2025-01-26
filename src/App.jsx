@@ -45,11 +45,11 @@ export default function App() {
     <>
       <h1>Pokémon Memo Cards</h1>
       <div className='pokemon-cards'>
-        <PokemonCards cards={pokemon} difficulty={difficulty} check={checkPokemonCard} setState={setPokemon}/>
+        <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} setState={setPokemon}/>
       </div>
-      <DifficultyButtons callback={setDifficulty} />
+      <DifficultyButtons onClick={setDifficulty} />
       <p>{type}</p>
-      <PokemonTypeButtons callback={setType} types={POKEMONTYPES} />
+      <PokemonTypeButtons onClick={setType} types={POKEMONTYPES} />
     </>
   )
 }
