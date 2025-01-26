@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import shuffleAndSlice from './script/shuffle-and-slice';
 import PokemonCards from './components/pokemon-cards';
 import DifficultyButtons from './components/difficulty-buttons';
 import PokemonTypeButtons from './components/pokemon-types-buttons';
@@ -7,17 +8,6 @@ import './App.css';
 const apiKey = import.meta.env.POKEMON_API_KEY;
 const POKEMONTYPES = ['', 'Fire', 'Water', 'Grass', 'Lightning', 'Dragon', 'Fighting', 'Darkness', 'Metal', 'Psychic'];
 let POKEMONCARDS = [];
-
-function shuffleAndSlice(arr, difficulty) {
-  let cardNum = difficulty === 'easy' ? 10 : difficulty === 'normal' ? 18 : 25;
-
-  for (let i = arr.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [arr[i], arr[j]] = [arr[j], arr[i]];
-  }
-
-  return arr.slice(0, cardNum);
-}
 
 function checkPokemonCard(pokemonId) {
   if (!POKEMONCARDS.includes(pokemonId)) {
@@ -55,7 +45,7 @@ export default function App() {
     <>
       <h1>Pokémon Memo Cards</h1>
       <div className='pokemon-cards'>
-        <PokemonCards cards={pokemon} callback={checkPokemonCard} />
+        <PokemonCards cards={pokemon} difficulty={difficulty} check={checkPokemonCard} setState={setPokemon}/>
       </div>
       <DifficultyButtons callback={setDifficulty} />
       <p>{type}</p>
