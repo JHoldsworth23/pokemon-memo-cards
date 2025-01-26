@@ -54,7 +54,9 @@ export default function App() {
   return (
     <>
       <h1>Pokémon Memo Cards</h1>
-      <PokemonCards cards={pokemon} callback={checkPokemonCard}/>
+      <div className='pokemon-cards'>
+        <PokemonCards cards={pokemon} callback={checkPokemonCard} />
+      </div>
       <DifficultyButtons callback={setDifficulty} />
       <p>{type}</p>
       <PokemonTypeButtons callback={setType} types={POKEMONTYPES} />
