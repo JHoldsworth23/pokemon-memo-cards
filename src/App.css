@@ -1,6 +1,6 @@
 #root {
   max-width: 1280px;
-  margin: 0 auto;
+  /* margin: 0; */
   padding: 2rem;
   text-align: center;
 }
@@ -39,6 +39,15 @@
   justify-items: center;
   gap: 10px 20px;
   margin: 0 auto 50px;
+}
+
+.all-pokemon-cards.normal {
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.all-pokemon-cards.hard {
+  grid-template-columns: repeat(10, 1fr);
+  margin-right: 120px;
 }
 
 img {
