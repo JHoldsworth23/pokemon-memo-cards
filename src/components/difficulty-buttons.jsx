@@ -1,10 +1,28 @@
 /* eslint-disable react/prop-types */
-export default function DifficultyButtons({ onClick }) {
+export default function DifficultyButtons({ onClick, isGameOver }) {
     return (
         <div>
-            <button onClick={() => onClick('easy')}>Easy</button>
-            <button onClick={() => onClick('normal')}>Normal</button>
-            <button onClick={() => onClick('hard')}>Hard</button>
+            <button 
+              onClick={() => {
+                onClick('easy');
+                isGameOver(false);
+            }}>
+                Easy
+            </button>
+            <button 
+              onClick={() => {
+                onClick('normal');
+                isGameOver(false);
+            }}>
+                Normal
+            </button>
+            <button 
+              onClick={() => {
+                onClick('hard');
+                isGameOver(false);
+            }}>
+                Hard
+            </button>
         </div>
     );
 }
