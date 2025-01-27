@@ -8,21 +8,22 @@ import './App.css';
 const apiKey = import.meta.env.POKEMON_API_KEY;
 const POKEMONTYPES = ['', 'Fire', 'Water', 'Grass', 'Lightning', 'Dragon', 'Fighting', 'Darkness', 'Metal', 'Psychic'];
 let POKEMONCARDS = [];
-// make a global variable for gameplay - checking if the game is on or over
-
-function checkPokemonCard(pokemonId) {
-  if (!POKEMONCARDS.includes(pokemonId)) {
-    POKEMONCARDS.push(pokemonId);
-    console.log(POKEMONCARDS);
-  } else {
-    console.log('GAME OVER');
-  }
-}
 
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
   const [type, setType] = useState('');
   const [difficulty, setDifficulty] = useState('easy');
+  const [isGameOver, setIsGameOver] = useState(true);
+
+  function checkPokemonCard(pokemonId) {
+    if (!POKEMONCARDS.includes(pokemonId)) {
+      POKEMONCARDS.push(pokemonId);
+      console.log(POKEMONCARDS);
+    } else {
+      setIsGameOver(true);
+      console.log('GAME OVER');
+    }
+  }
 
   useEffect(() => {
     const query = type ? `?q=types:${type}` : '';
@@ -45,13 +46,21 @@ export default function App() {
   return (
     <>
       <h1>Pokémon Memo Cards</h1>
-      <p>Score: {`${POKEMONCARDS.length} / ${pokemon.length}`}</p>
-      <div className={'all-pokemon-cards ' + difficulty}>
-        <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} setState={setPokemon}/>
-      </div>     
-      <DifficultyButtons onClick={setDifficulty} />
-      <p>{type}</p>
-      <PokemonTypeButtons onClick={setType} types={POKEMONTYPES} />
+      {!isGameOver && (
+        <>
+          <p>Score: {`${POKEMONCARDS.length} / ${pokemon.length}`}</p>
+          <div className={'all-pokemon-cards ' + difficulty}>
+            <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} setState={setPokemon} />
+          </div> 
+        </>
+      )}
+      {isGameOver && (
+        <>
+          <DifficultyButtons onClick={setDifficulty} isGameOver={setIsGameOver}/>
+            <p>{type}</p>
+          <PokemonTypeButtons onClick={setType} types={POKEMONTYPES} />
+        </>
+      )}
     </>
   )
 }
