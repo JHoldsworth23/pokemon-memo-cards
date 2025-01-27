@@ -46,9 +46,9 @@ export default function App() {
     <>
       <h1>Pokémon Memo Cards</h1>
       <p>Score: {`${POKEMONCARDS.length} / ${pokemon.length}`}</p>
-      <div className='pokemon-cards'>
+      <div className={'all-pokemon-cards ' + difficulty}>
         <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} setState={setPokemon}/>
-      </div>
+      </div>     
       <DifficultyButtons onClick={setDifficulty} />
       <p>{type}</p>
       <PokemonTypeButtons onClick={setType} types={POKEMONTYPES} />
