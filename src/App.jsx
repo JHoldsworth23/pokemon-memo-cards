@@ -8,16 +8,6 @@ import './App.css';
 const apiKey = import.meta.env.POKEMON_API_KEY;
 const POKEMONTYPES = ['', 'Fire', 'Water', 'Grass', 'Lightning', 'Dragon', 'Fighting', 'Darkness', 'Metal', 'Psychic'];
 let POKEMONCARDS = [];
-// make a global variable for gameplay - checking if the game is on or over
-
-function checkPokemonCard(pokemonId) {
-  if (!POKEMONCARDS.includes(pokemonId)) {
-    POKEMONCARDS.push(pokemonId);
-    console.log(POKEMONCARDS);
-  } else {
-    console.log('GAME OVER');
-  }
-}
 
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -29,27 +19,40 @@ export default function App() {
     fetch(`https://api.pokemontcg.io/v2/cards${query}`, {
       headers: {
         'X-Api-Key': apiKey,
+        mode: 'cors',
       }
     })
       .then(response => response.json())
       .then(data => {
         console.log("Fetching a data...");
         const pokemonData = data.data;
-        const pokemonArr = shuffleAndSlice(pokemonData, difficulty);
-        console.log(pokemonArr, pokemonArr.length);
-        setPokemon(pokemonArr);
+        const currentPokemon = shuffleAndSlice(pokemonData, 30);
+        setPokemon(currentPokemon);
       })
       .catch(err => console.log(err.message));
-  }, [type, difficulty]);
+  }, [type]);
+
+  function checkPokemonCard(pokemonId, cards) {
+    setPokemon(shuffleAndSlice(cards, difficulty));
+
+    if (!POKEMONCARDS.includes(pokemonId)) {
+      POKEMONCARDS.push(pokemonId);
+      console.log(POKEMONCARDS);
+    } else {
+      console.log('GAME OVER');
+    }
+  }
+
+  const currentCards = pokemon;
 
   return (
     <>
       <h1>Pokémon Memo Cards</h1>
       <p>Score: {`${POKEMONCARDS.length} / ${pokemon.length}`}</p>
       <div className={'all-pokemon-cards ' + difficulty}>
-        <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} setState={setPokemon}/>
-      </div>     
-      <DifficultyButtons onClick={setDifficulty} />
+        <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} />
+      </div>
+      <DifficultyButtons cards={currentCards} onClick={setDifficulty} setPokemon={setPokemon} />
       <p>{type}</p>
       <PokemonTypeButtons onClick={setType} types={POKEMONTYPES} />
     </>
