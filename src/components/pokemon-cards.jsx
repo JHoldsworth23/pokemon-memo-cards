@@ -1,17 +1,14 @@
-import shuffleAndSlice from "../script/shuffle-and-slice";
-
-export default function PokemonCards({ cards, difficulty, onClick, setState }) {
-    return (
-        cards.map(card => 
-            <div 
-              key={card.id} 
-              onClick={() => {
-                onClick(card.id);
-                setState(shuffleAndSlice(cards, difficulty))
-              }}
-            >
-                <img src={card.images.small} alt={card.name} />
-            </div>
-        )
-    );
+export default function PokemonCards({ cards, onClick }) {
+  return (
+    cards.map(card => 
+        <div 
+          key={card.id} 
+          onClick={() => {
+            onClick(card.id, cards);
+          }}
+        >
+            <img src={card.images.small} alt={card.name} />
+        </div>
+    )
+  );
 }
