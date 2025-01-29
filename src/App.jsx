@@ -7,10 +7,10 @@ import './App.css';
 
 const apiKey = import.meta.env.POKEMON_API_KEY;
 const POKEMONTYPES = ['', 'Fire', 'Water', 'Grass', 'Lightning', 'Dragon', 'Fighting', 'Darkness', 'Metal', 'Psychic'];
-let POKEMONCARDS = [];
 
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
+  const [selectedPokemon, setSelectedPokemon] = useState([]);
   const [type, setType] = useState('');
   const [difficulty, setDifficulty] = useState('easy');
 
@@ -35,20 +35,18 @@ export default function App() {
   function checkPokemonCard(pokemonId, cards) {
     setPokemon(shuffleAndSlice(cards, difficulty));
 
-    if (!POKEMONCARDS.includes(pokemonId)) {
-      POKEMONCARDS.push(pokemonId);
-      console.log(POKEMONCARDS);
+    if (!selectedPokemon.includes(pokemonId)) {
+      setSelectedPokemon([...selectedPokemon, pokemonId]);
+      console.log(selectedPokemon);
     } else {
       console.log('GAME OVER');
     }
   }
 
-  // const currentCards = pokemon;
-
   return (
     <>
       <h1>Pokémon Memo Cards</h1>
-      <p>Score: {`${POKEMONCARDS.length} / ${pokemon.length}`}</p>
+      <p>Score: {`${selectedPokemon.length} / ${pokemon.length}`}</p>
       <div className={'all-pokemon-cards ' + difficulty}>
         <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} />
       </div>
