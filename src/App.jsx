@@ -43,7 +43,7 @@ export default function App() {
     }
   }
 
-  const currentCards = pokemon;
+  // const currentCards = pokemon;
 
   return (
     <>
@@ -52,7 +52,7 @@ export default function App() {
       <div className={'all-pokemon-cards ' + difficulty}>
         <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} />
       </div>
-      <DifficultyButtons cards={currentCards} onClick={setDifficulty} setPokemon={setPokemon} />
+      <DifficultyButtons cards={pokemon} onClick={setDifficulty} setPokemon={setPokemon} />
       <p>{type}</p>
       <PokemonTypeButtons onClick={setType} types={POKEMONTYPES} />
     </>
