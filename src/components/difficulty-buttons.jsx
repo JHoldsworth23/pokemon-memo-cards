@@ -1,25 +1,25 @@
 /* eslint-disable react/prop-types */
-export default function DifficultyButtons({ cards, onClick, setPokemon, setGameMode }) {
+export default function DifficultyButtons({ cards, onClick, setPokemon, changeGameMode }) {
     return (
         <div>
             <button onClick={() => {
                 onClick('easy');
                 setPokemon(cards.slice(0, 10));
-                setGameMode("start");
+                changeGameMode("start");
             }}>
                 Easy
             </button>
             <button onClick={() => {
                 onClick('normal');
                 setPokemon(cards.slice(0, 18));
-                setGameMode("start");
+                changeGameMode("start");
             }}>
                 Normal
             </button>
             <button onClick={() => {
                 onClick('hard');
                 setPokemon(cards);
-                setGameMode("start");
+                changeGameMode("start");
             }}>
                 Hard
             </button>

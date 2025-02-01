@@ -22,7 +22,7 @@ const apiKey = import.meta.env.POKEMON_API_KEY;
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState([]);
-  const [gameMode, setGameMode] = useState('menu');
+  const [gameMode, setGameMode] = useState({ status: 'menu', gameOver: false, win: false });
   const [type, setType] = useState('');
   const [difficulty, setDifficulty] = useState('easy');
 
@@ -51,12 +51,16 @@ export default function App() {
       setSelectedPokemon([...selectedPokemon, pokemonId]);
       console.log(selectedPokemon);
     } else if (selectedPokemon.length === cards.length) {
-      setGameMode('win');
+      setGameMode({ ...gameMode, win: true });
       console.log('YOU WON!');
     } else {
-      setGameMode('game over');
+      setGameMode({ ...gameMode, gameOver: true });
       console.log('GAME OVER');
     }
+  }
+
+  function changeGameMode(gameStatus) {
+    setGameMode({ ...gameMode, status: gameStatus });
   }
 
   const POKEMONTYPES = [
@@ -75,32 +79,30 @@ export default function App() {
   return (
     <>
       <h1>Pokémon Memo Cards</h1>
-      {gameMode === 'start' && (
+      {gameMode.status == 'start' && (
         <>
           <p>Score: {`${selectedPokemon.length} / ${pokemon.length}`}</p>
           <div className={'all-pokemon-cards ' + difficulty}>
             <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} />
           </div>
+          {/* DISPLAY THE RESULT 
+            <div>
+              <p>GAME OVER</p>
+              <div>
+                TWO BUTTONS TO RESET THE GAME OR SELECT NEW DIFFICULTY OR TYPE
+              </div>
+            </div>*/}
         </>
         )
       }
-      {gameMode === 'menu' && (
+      {gameMode.status == 'menu' && (
         <>
-          <DifficultyButtons cards={pokemon} onClick={setDifficulty} setPokemon={setPokemon} setGameMode={setGameMode}/>
+          <DifficultyButtons cards={pokemon} onClick={setDifficulty} setPokemon={setPokemon} changeGameMode={changeGameMode}/>
             <p>{type}</p>
           <PokemonTypeButtons onClick={setType} types={POKEMONTYPES} />
         </>
         )
       } 
-      {((gameMode == 'game over') || (gameMode == 'win')) && (
-        <div>
-          <p>GAME OVER</p>
-          <div>
-            {/* TWO BUTTONS TO RESET THE GAME OR SELECT NEW DIFFICULTY OR TYPE */}
-          </div>
-        </div>
-        )
-      }
     </>
   )
 }
