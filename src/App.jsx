@@ -18,22 +18,11 @@ import metalType from "./assets/metal-type.png";
 import psychicType from "./assets/psychic-type.png";
 
 const apiKey = import.meta.env.POKEMON_API_KEY;
-const POKEMONTYPES = [
-  { type: '', icon: allTypes }, 
-  { type: 'Fire', icon: fireType }, 
-  { type: 'Water', icon: waterType }, 
-  { type: 'Grass', icon: grassType }, 
-  { type: 'Lightning', icon: lightningType }, 
-  { type: 'Dragon', icon: dragonType }, 
-  { type: 'Fighting', icon: fightingType }, 
-  { type: 'Darkness', icon: darknessType }, 
-  { type: 'Metal', icon: metalType }, 
-  { type: 'Psychic', icon: psychicType },
-];
 
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState([]);
+  const [gameMode, setGameMode] = useState('menu');
   const [type, setType] = useState('');
   const [difficulty, setDifficulty] = useState('easy');
 
@@ -61,21 +50,46 @@ export default function App() {
     if (!selectedPokemon.includes(pokemonId)) {
       setSelectedPokemon([...selectedPokemon, pokemonId]);
       console.log(selectedPokemon);
+    } else if (selectedPokemon.length === cards.length) {
+      console.log('YOU WON!');
     } else {
       console.log('GAME OVER');
     }
   }
 
+  const POKEMONTYPES = [
+    { type: '', icon: allTypes }, 
+    { type: 'Fire', icon: fireType }, 
+    { type: 'Water', icon: waterType }, 
+    { type: 'Grass', icon: grassType }, 
+    { type: 'Lightning', icon: lightningType }, 
+    { type: 'Dragon', icon: dragonType }, 
+    { type: 'Fighting', icon: fightingType }, 
+    { type: 'Darkness', icon: darknessType }, 
+    { type: 'Metal', icon: metalType }, 
+    { type: 'Psychic', icon: psychicType },
+  ];
+
   return (
     <>
       <h1>Pokémon Memo Cards</h1>
-      <p>Score: {`${selectedPokemon.length} / ${pokemon.length}`}</p>
-      <div className={'all-pokemon-cards ' + difficulty}>
-        <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} />
-      </div>
-      <DifficultyButtons cards={pokemon} onClick={setDifficulty} setPokemon={setPokemon} />
-      <p>{type}</p>
-      <PokemonTypeButtons onClick={setType} types={POKEMONTYPES} />
+      {gameMode === 'start' && (
+        <>
+          <p>Score: {`${selectedPokemon.length} / ${pokemon.length}`}</p>
+          <div className={'all-pokemon-cards ' + difficulty}>
+            <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} />
+          </div>
+        </>
+        )
+      }
+      {gameMode === 'menu' && (
+        <>
+          <DifficultyButtons cards={pokemon} onClick={setDifficulty} setPokemon={setPokemon} setGameMode={setGameMode}/>
+            <p>{type}</p>
+          <PokemonTypeButtons onClick={setType} types={POKEMONTYPES} />
+        </>
+        )
+      } 
     </>
   )
 }
