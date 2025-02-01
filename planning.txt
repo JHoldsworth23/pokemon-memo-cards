@@ -14,6 +14,18 @@ Click function on Pokemon Cards - check if it has not been clicked before (use a
 
 Buttons to select types of pokémon - All, Fire, Water, Grass, Lightning, Dragon, Fighting, Psychic, Darkness, Metal;
 
+GAME MODE: 
+Menu
+Start
+Game over
+
+Add loading scene for 5 seconds when click on type button
+
+Flip all cards when clicked on a card for 2 seconds? to shuffle
+
+End the game - reset or new game for new type
+
+End the game - maximum score available
 High score - local storage cache
 
 IMAGE:
