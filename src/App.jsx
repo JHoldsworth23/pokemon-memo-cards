@@ -51,8 +51,10 @@ export default function App() {
       setSelectedPokemon([...selectedPokemon, pokemonId]);
       console.log(selectedPokemon);
     } else if (selectedPokemon.length === cards.length) {
+      setGameMode('win');
       console.log('YOU WON!');
     } else {
+      setGameMode('game over');
       console.log('GAME OVER');
     }
   }
@@ -90,6 +92,15 @@ export default function App() {
         </>
         )
       } 
+      {((gameMode == 'game over') || (gameMode == 'win')) && (
+        <div>
+          <p>GAME OVER</p>
+          <div>
+            {/* TWO BUTTONS TO RESET THE GAME OR SELECT NEW DIFFICULTY OR TYPE */}
+          </div>
+        </div>
+        )
+      }
     </>
   )
 }
