@@ -23,6 +23,7 @@ export default function App() {
   const [pokemon, setPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState([]);
   const [gameMode, setGameMode] = useState({ status: 'menu', gameOver: false, win: false });
+  const [isFlipped, setIsFlipped] = useState(false);
   const [type, setType] = useState('');
   const [difficulty, setDifficulty] = useState('easy');
 
@@ -45,7 +46,7 @@ export default function App() {
   }, [type]);
 
   function checkPokemonCard(pokemonId, cards) {
-    setPokemon(shuffleAndSlice(cards, difficulty));
+    setIsFlipped(true);
 
     if (!selectedPokemon.includes(pokemonId)) {
       setSelectedPokemon([...selectedPokemon, pokemonId]);
@@ -57,6 +58,14 @@ export default function App() {
       setGameMode({ ...gameMode, gameOver: true });
       console.log('GAME OVER');
     }
+
+    setTimeout(() => {
+      setPokemon(shuffleAndSlice(cards, difficulty));
+    }, 800);
+    
+    setTimeout(() => {
+      setIsFlipped(false);
+    }, 1300);    
   }
 
   function changeGameMode(gameStatus) {
@@ -83,15 +92,18 @@ export default function App() {
         <>
           <p>Score: {`${selectedPokemon.length} / ${pokemon.length}`}</p>
           <div className={'all-pokemon-cards ' + difficulty}>
-            <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} />
+            <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} isFlipped={isFlipped} />
           </div>
-          {/* DISPLAY THE RESULT 
+          {(gameMode.gameOver || gameMode.win) && (
+            // this is a dialog modal to navigate the setting
             <div>
               <p>GAME OVER</p>
               <div>
                 TWO BUTTONS TO RESET THE GAME OR SELECT NEW DIFFICULTY OR TYPE
               </div>
-            </div>*/}
+            </div>
+            )
+          }
         </>
         )
       }
