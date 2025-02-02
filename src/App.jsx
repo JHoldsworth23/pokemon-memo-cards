@@ -78,7 +78,9 @@ export default function App() {
     }, 1300);    
   }
 
-  function changeGameMode(gameStatus) {
+  function startGame(difficultyMode, array, gameStatus) {
+    setDifficulty(difficultyMode);
+    setPokemon(array);
     setGameMode({ ...gameMode, status: gameStatus });
   }
 
@@ -119,7 +121,7 @@ export default function App() {
       }
       {gameMode.status == 'menu' && (
         <>
-          <DifficultyButtons cards={pokemon} onClick={setDifficulty} setPokemon={setPokemon} changeGameMode={changeGameMode}/>
+          <DifficultyButtons cards={pokemon} onClick={startGame} />
             <p>{type}</p>
           <PokemonTypeButtons onClick={setType} types={POKEMONTYPES} />
         </>
