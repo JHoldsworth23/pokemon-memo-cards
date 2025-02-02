@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import shuffleAndSlice from './script/shuffle-and-slice';
 import PokemonCards from './components/pokemon-cards';
 import DifficultyButtons from './components/difficulty-buttons';
 import PokemonTypeButtons from './components/pokemon-types-buttons';
@@ -44,6 +43,17 @@ export default function App() {
       })
       .catch(err => console.log(err.message));
   }, [type]);
+
+  function shuffleAndSlice(arr, difficultyMode) {
+    let cardNum = difficultyMode === 'easy' ? 10 : difficultyMode === 'normal' ? 18 : 30;
+
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+  
+    return arr.slice(0, cardNum);
+  }
 
   function checkPokemonCard(pokemonId, cards) {
     setIsFlipped(true);
