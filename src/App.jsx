@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import PokemonCards from './components/pokemon-cards';
 import Navigation from './components/navigation';
+import GameInterface from './components/game-interface';
 import './App.css';
 
 const apiKey = import.meta.env.POKEMON_API_KEY;
@@ -74,25 +74,6 @@ export default function App() {
   return (
     <>
       <h1>Pokémon Memo Cards</h1>
-      {gameMode.status == 'start' && (
-        <>
-          <p>Score: {`${selectedPokemon.length} / ${pokemon.length}`}</p>
-          <div className={'all-pokemon-cards ' + difficulty}>
-            <PokemonCards cards={pokemon} difficulty={difficulty} onClick={checkPokemonCard} isFlipped={isFlipped} />
-          </div>
-          {(gameMode.gameOver || gameMode.win) && (
-            // this is a dialog modal to navigate the setting
-            <div>
-              <p>GAME OVER</p>
-              <div>
-                TWO BUTTONS TO RESET THE GAME OR SELECT NEW DIFFICULTY OR TYPE
-              </div>
-            </div>
-            )
-          }
-        </>
-        )
-      }
       {gameMode.status == 'menu' && (
         <Navigation 
           pokemon={pokemon} 
@@ -100,7 +81,17 @@ export default function App() {
           setType={setType} 
         />
         )
-      } 
+      }
+      {gameMode.status == 'start' && (
+        <GameInterface 
+          pokemon={pokemon}
+          selectedPokemon={selectedPokemon}
+          gameMode={gameMode}
+          difficulty={difficulty}
+          checkPokemonCard={checkPokemonCard}
+          isFlipped={isFlipped}
+        />
+      )}
     </>
   )
 }
