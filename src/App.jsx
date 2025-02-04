@@ -74,24 +74,23 @@ export default function App() {
   return (
     <>
       <h1>Pokémon Memo Cards</h1>
-      {gameMode.status == 'menu' && (
+      {gameMode.status == 'menu' ? (
         <Navigation 
           pokemon={pokemon} 
           startGame={startGame} 
           setType={setType} 
         />
+        ) : (
+          <GameInterface 
+            pokemon={pokemon}
+            selectedPokemon={selectedPokemon}
+            gameMode={gameMode}
+            difficulty={difficulty}
+            checkPokemonCard={checkPokemonCard}
+            isFlipped={isFlipped}
+          />
         )
       }
-      {gameMode.status == 'start' && (
-        <GameInterface 
-          pokemon={pokemon}
-          selectedPokemon={selectedPokemon}
-          gameMode={gameMode}
-          difficulty={difficulty}
-          checkPokemonCard={checkPokemonCard}
-          isFlipped={isFlipped}
-        />
-      )}
     </>
   )
 }
