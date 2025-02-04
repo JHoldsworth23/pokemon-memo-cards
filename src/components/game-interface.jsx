@@ -12,14 +12,12 @@ export default function GameInterface({
     return (
         <>
           <p>Score: {`${selectedPokemon.length} / ${pokemon.length}`}</p> 
-          <div className={'all-pokemon-cards ' + difficulty}>
-            <PokemonCards 
-              cards={pokemon} 
-              difficulty={difficulty}
-              onClick={checkPokemonCard}
-              isFlipped={isFlipped}
-            />
-          </div>
+          <PokemonCards 
+            cards={pokemon} 
+            difficulty={difficulty}
+            onClick={checkPokemonCard}
+            isFlipped={isFlipped}
+          />
           {((gameMode.gameOver || gameMode.win)) && (
             // this is a dialog modal to navigate the setting
             <div>
