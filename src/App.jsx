@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Navigation from './components/navigation';
 import GameInterface from './components/game-interface';
+import Modal from './components/modal';
 import './App.css';
 
 const apiKey = import.meta.env.POKEMON_API_KEY;
@@ -71,6 +72,18 @@ export default function App() {
     setGameMode({ ...gameMode, status: gameStatus });
   }
 
+  function resetGame() {
+    setGameMode({ ...gameMode, gameOver: false, win: false });
+    setSelectedPokemon([]);
+  }
+
+  function newGame() {
+    setGameMode({ status: 'menu', gameOver: false, win: false });
+    setPokemon([]);
+    setSelectedPokemon([]);
+    setType('');
+  }
+
   return (
     <>
       <h1>Pokémon Memo Cards</h1>
@@ -81,6 +94,7 @@ export default function App() {
           setType={setType} 
         />
         ) : (
+          <>
           <GameInterface 
             pokemon={pokemon}
             selectedPokemon={selectedPokemon}
@@ -88,7 +102,11 @@ export default function App() {
             difficulty={difficulty}
             checkPokemonCard={checkPokemonCard}
             isFlipped={isFlipped}
+            resetGame={resetGame}
+            newGame={newGame}
           />
+          {((gameMode.gameOver || gameMode.win)) && <Modal resetGame={resetGame} newGame={newGame} />}
+          </>
         )
       }
     </>
