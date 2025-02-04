@@ -1,24 +1,3 @@
-API Request - useEffect hook;
-add environment variable for api key;
-useMemo hook - when to use it or not use it?  
-
-Difficulty - Easy (10 Cards), Normal (20 cards), Hard (30 cards);
-
-Fetching a data - array dependency on pokemon types, 
-                  shuffle array randomly - to optimize the function (add the count based on difficulty instead of the 250 pokemon cards)
-                  and slice from index 0 to index (amount of cards based on difficulty);
-
-Click function on Pokemon Cards - check if it has not been clicked before (use array and include method)
-                                  if pokemon value exist in the array, game over and reset the array to be empty
-                                  if pokemon does not exist in the array, push the value and shuffle the cards
-
-Buttons to select types of pokémon - All, Fire, Water, Grass, Lightning, Dragon, Fighting, Psychic, Darkness, Metal;
-
-GAME MODE: 
-Menu
-Start
-Game over
-
 Add loading scene for 5 seconds when click on type button
 
 Flip all cards when clicked on a card for 2 seconds? to shuffle
