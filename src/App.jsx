@@ -5,6 +5,7 @@ import Modal from './components/modal';
 import './App.css';
 
 const apiKey = import.meta.env.POKEMON_API_KEY;
+window.localStorage.setItem('score', 0);
 
 export default function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -30,6 +31,8 @@ export default function App() {
         setPokemon(currentPokemon);
       })
       .catch(err => console.log(err.message));
+
+      // SETTIMEOUT FUNCTION - LOADING - SET TO FALSE - 5 TO 7 SECONDS
   }, [type]);
 
   function shuffleAndSlice(arr, difficultyMode) {
@@ -43,6 +46,11 @@ export default function App() {
     return arr.slice(0, cardNum);
   }
 
+  function updateBestScore(newScore) {
+    const oldHighScore = parseFloat(localStorage.getItem('score'));
+    if (oldHighScore === null || oldHighScore < newScore) localStorage.setItem('score', newScore);
+  }
+
   function checkPokemonCard(pokemonId, cards) {
     setIsFlipped(true);
 
@@ -51,9 +59,11 @@ export default function App() {
       console.log(selectedPokemon);
     } else if (selectedPokemon.length === cards.length) {
       setGameMode({ ...gameMode, win: true });
+      updateBestScore(selectedPokemon.length);
       console.log('YOU WON!');
     } else {
       setGameMode({ ...gameMode, gameOver: true });
+      updateBestScore(selectedPokemon.length);
       console.log('GAME OVER');
     }
 
@@ -78,14 +88,14 @@ export default function App() {
   }
 
   function newGame() {
-    setGameMode({ status: 'menu', gameOver: false, win: false });
-    setPokemon([]);
-    setSelectedPokemon([]);
     setType('');
+    setGameMode({ status: 'menu', gameOver: false, win: false });
+    setSelectedPokemon([]);
   }
 
   return (
     <>
+      {/* TITLE COMPONENT */}
       <h1>Pokémon Memo Cards</h1>
       {gameMode.status == 'menu' ? (
         <Navigation 
