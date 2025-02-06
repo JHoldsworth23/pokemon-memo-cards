@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import Scoreboard from "./scoreboard";
 import PokemonCards from "./pokemon-cards";
 
 export default function GameInterface({ 
@@ -10,7 +11,7 @@ export default function GameInterface({
 }) {
     return (
         <>
-          <p>Score: {`${selectedPokemon.length} / ${pokemon.length}`}</p> 
+          <Scoreboard currentScore={selectedPokemon.length} maxScore={pokemon.length} />
           <PokemonCards 
             cards={pokemon} 
             difficulty={difficulty}
