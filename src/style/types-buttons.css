@@ -1,0 +1,27 @@
+.pokemon-types > p {
+    margin: 12px 0;
+    font-size: 1.2rem;
+}
+
+.all-type-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 60%;
+    margin: 8px auto 0;
+}
+
+.type-button {
+    width: 130px;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    padding: 12px;
+}
+
+.type-button > img {
+    display: block;
+    width: 40px;
+    height: auto;
+    margin: 0 auto 10px;
+}
