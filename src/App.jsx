@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Loading from './components/loading';
 import Navigation from './components/navigation';
 import GameInterface from './components/game-interface';
 import Modal from './components/modal';
@@ -8,6 +9,7 @@ const apiKey = import.meta.env.POKEMON_API_KEY;
 window.localStorage.setItem('score', 0);
 
 export default function App() {
+  const [loading, setLoading] = useState(true);
   const [pokemon, setPokemon] = useState([]);
   const [selectedPokemon, setSelectedPokemon] = useState([]);
   const [gameMode, setGameMode] = useState({ status: 'menu', gameOver: false, win: false });
@@ -16,6 +18,7 @@ export default function App() {
   const [difficulty, setDifficulty] = useState('easy');
 
   useEffect(() => {
+    setLoading(true);
     const query = type ? `?q=types:${type}` : '';
     fetch(`https://api.pokemontcg.io/v2/cards${query}`, {
       headers: {
@@ -31,8 +34,7 @@ export default function App() {
         setPokemon(currentPokemon);
       })
       .catch(err => console.log(err.message));
-
-      // SETTIMEOUT FUNCTION - LOADING - SET TO FALSE - 5 TO 7 SECONDS
+      setTimeout(() => setLoading(false), 7000);
   }, [type]);
 
   function shuffleAndSlice(arr, difficultyMode) {
@@ -95,6 +97,7 @@ export default function App() {
 
   return (
     <>
+      {loading && <Loading />}
       {/* TITLE COMPONENT */}
       <h1>Pokémon Memo Cards</h1>
       {gameMode.status == 'menu' ? (
