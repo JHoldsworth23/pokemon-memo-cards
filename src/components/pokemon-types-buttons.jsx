@@ -4,7 +4,7 @@ import "../style/types-buttons.css";
 export default function PokemonTypeButtons({ onClick, types }) {
     return (
         <div className="pokemon-types">
-            <p>Select Any Pokémon Type</p>
+            <p>Select a pokémon type</p>
             <div className="all-type-buttons">
                 {types.map((pokemonType, idx) => 
                     <button 
