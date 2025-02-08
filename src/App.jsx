@@ -119,7 +119,7 @@ export default function App() {
             resetGame={resetGame}
             newGame={newGame}
           />
-          {((gameMode.gameOver || gameMode.win)) && <Modal resetGame={resetGame} newGame={newGame} />}
+          {((gameMode.gameOver || gameMode.win)) && <Modal resetGame={resetGame} newGame={newGame} gameMode={gameMode} />}
           </>
         )
       }
