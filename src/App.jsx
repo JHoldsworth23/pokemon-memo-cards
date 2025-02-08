@@ -97,7 +97,7 @@ export default function App() {
 
   return (
     <>
-      {loading && <Loading />}
+      {loading && <Loading isLoading={loading} />}
       {/* TITLE COMPONENT */}
       <h1>Pokémon Memo Cards</h1>
       {gameMode.status == 'menu' ? (
