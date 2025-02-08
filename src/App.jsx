@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import Title from './components/title';
 import Loading from './components/loading';
 import Navigation from './components/navigation';
 import GameInterface from './components/game-interface';
@@ -98,8 +99,7 @@ export default function App() {
   return (
     <>
       {loading && <Loading isLoading={loading} />}
-      {/* TITLE COMPONENT */}
-      <h1>Pokémon Memo Cards</h1>
+      <Title />
       {gameMode.status == 'menu' ? (
         <Navigation 
           pokemon={pokemon} 
