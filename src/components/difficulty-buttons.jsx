@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import "../style/difficulty-buttons.css";
 
-export default function DifficultyButtons({ cards, onClick }) {
+export default function DifficultyButtons({ cards, onClick, pokemonType }) {
     return (
         <div className="difficulty-container">
             <p>Select a difficulty level</p>
@@ -16,6 +16,8 @@ export default function DifficultyButtons({ cards, onClick }) {
                     Hard
                 </button>
             </div>
+            <img src={pokemonType.icon} alt="" />
+            <p>Pokémon type: {pokemonType.type ? pokemonType.type : 'All Types'}</p>
         </div>
     );
 }

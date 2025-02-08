@@ -104,7 +104,8 @@ export default function App() {
         <Navigation 
           pokemon={pokemon} 
           startGame={startGame} 
-          setType={setType} 
+          setType={setType}
+          pokemonType={type} 
         />
         ) : (
           <>

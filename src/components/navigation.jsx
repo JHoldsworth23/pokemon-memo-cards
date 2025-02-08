@@ -14,7 +14,7 @@ import darknessType from "../assets/darkness-type.png";
 import metalType from "../assets/metal-type.png";
 import psychicType from "../assets/psychic-type.png";
 
-export default function Navigation({ pokemon, startGame, setType }) {
+export default function Navigation({ pokemon, startGame, setType, pokemonType }) {
     const POKEMONTYPES = [
         { type: '', icon: allTypes }, 
         { type: 'Fire', icon: fireType }, 
@@ -28,9 +28,11 @@ export default function Navigation({ pokemon, startGame, setType }) {
         { type: 'Psychic', icon: psychicType },
       ];
 
+    const selectedType = POKEMONTYPES.filter(obj => obj.type == pokemonType);
+    
     return (
         <>
-            <DifficultyButtons cards={pokemon} onClick={startGame}/>
+            <DifficultyButtons cards={pokemon} onClick={startGame} pokemonType={selectedType[0]} />
             <PokemonTypeButtons onClick={setType} types={POKEMONTYPES}/>
         </>
     )
