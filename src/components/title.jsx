@@ -1,10 +1,11 @@
-import PokeBall from '../assets/pokeball-logo.png';
+import PokemonTitle from '../assets/image/pokemon-logo.png';
+import "../style/title.css";
 
 export default function Title() {
     return (
         <>
-            <img src={PokeBall} alt="pokeball logo" />
-            <h1>Pokémon Memory Game</h1>
+            <img className="title" src={PokemonTitle} alt="pokemon" />
+            <h1>Memory Game</h1>
         </>
     )
 }
