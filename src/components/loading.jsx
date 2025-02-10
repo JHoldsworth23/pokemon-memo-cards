@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import loadingImage from '../assets/loading.png';
+import loadingImage from '../assets/image/loading.png';
 import BouncingDotsLoader from './bouncing-dots-loader';
 import "../style/loading.css";
 

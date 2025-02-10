@@ -3,16 +3,16 @@ import DifficultyButtons from "./difficulty-buttons";
 import PokemonTypeButtons from "./pokemon-types-buttons";
 
 // POKEMON ICONS
-import allTypes from "../assets/all-type.png";
-import fireType from "../assets/fire-type.png";
-import waterType from "../assets/water-type.png";
-import grassType from "../assets/grass-type.png";
-import lightningType from "../assets/lightning-type.png";
-import dragonType from "../assets/dragon-type.png";
-import fightingType from "../assets/fighting-type.png";
-import darknessType from "../assets/darkness-type.png";
-import metalType from "../assets/metal-type.png";
-import psychicType from "../assets/psychic-type.png";
+import allTypes from "../assets/image/all-type.png";
+import fireType from "../assets/image/fire-type.png";
+import waterType from "../assets/image/water-type.png";
+import grassType from "../assets/image/grass-type.png";
+import lightningType from "../assets/image/lightning-type.png";
+import dragonType from "../assets/image/dragon-type.png";
+import fightingType from "../assets/image/fighting-type.png";
+import darknessType from "../assets/image/darkness-type.png";
+import metalType from "../assets/image/metal-type.png";
+import psychicType from "../assets/image/psychic-type.png";
 
 export default function Navigation({ pokemon, startGame, setType, pokemonType }) {
     const POKEMONTYPES = [

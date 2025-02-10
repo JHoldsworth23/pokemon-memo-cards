@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import PokeBall from "../assets/pokeball-logo.png";
+import PokeBall from "../assets/image/pokeball-logo.png";
 import "../style/modal.css";
 
 export default function Modal({ resetGame, newGame, gameMode }) {
