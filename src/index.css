@@ -1,5 +1,10 @@
+@font-face {
+  font-family: 'Bebas Neue';
+  src: url(/src/assets/font/BebasNeue-Regular.ttf) format('truetype');
+}
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family:'Bebas Neue', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -13,26 +18,16 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
 body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center;
   min-width: 320px;
   min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  background-image: url(/src/assets/image/background.jpg);
+  background-position: center;
+  background-size: cover;
 }
 
 button {
@@ -48,21 +43,4 @@ button {
 }
 button:hover {
   border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
