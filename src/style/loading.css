@@ -21,11 +21,21 @@
     animation: 2.8s ease-in-out 0s infinite spin;
 }
 
+.loading-dots {
+    font-size: 1.5rem;
+    letter-spacing: 1.2px;
+    color: #000000;
+    background-color: #FEFEFE;
+    padding: 2px 16px;
+    border: 4px solid #000000;
+    border-radius: 12px;
+}
+
 .dot {
     display: inline-block;
     width: 10px;
     height: 10px;
-    background-color: #ccc;
+    background-color: #1A1A1A;
     border-radius: 50%;
     margin: 0 3px;
     animation: loading 1s ease-in-out infinite;
