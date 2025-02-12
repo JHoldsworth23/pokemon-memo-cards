@@ -1,16 +1,48 @@
+.difficulty-container {
+    max-width: max-content;
+    background-color: #FEFEFE;
+    color: #000000;
+    padding: 24px 80px;
+    border: 6px solid #000000;
+    border-radius: 16px;
+    margin: auto;
+}
+
 .difficulty-container > p {
-    font-size: 1.2rem;
+    font-size: 1.6rem;
+    margin: 0 0 12px;
+    letter-spacing: 2px;
+}
+
+p:nth-child(2) {
+    margin: 0 !important;
 }
 
 .difficulty-buttons {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 16px;
+    margin-bottom: 24px;
 }
 
-.difficulty-buttons > button {
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
+.selected-type-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+img[src$="type.png"] {
+    width: 60px;
+    height: 60px;
+}
+
+p:last-child {
+    font-size: 2rem;
+    margin: 0;
 }
