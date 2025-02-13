@@ -28,9 +28,14 @@
 
 .front-card {
     position: absolute;
+    transition: transform 0.2s cubic-bezier(0.65, 0.05, 0.36, 1);
     width: 100%;
     height: 100%;
     backface-visibility: hidden;
+}
+
+.front-card:hover {
+    transform: scale(1.075);
 }
 
 .front-card > img {
@@ -43,5 +48,3 @@
     backface-visibility: hidden;
     transform: rotateY(180deg);
 }
-
-/* #DA8301 */
