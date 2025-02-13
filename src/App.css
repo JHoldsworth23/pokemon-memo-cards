@@ -5,23 +5,6 @@
   text-align: center;
 }
 
-.all-pokemon-cards {
-  display: grid;
-  grid-template: minmax(100px, auto) / repeat(5, 1fr);
-  justify-items: center;
-  gap: 10px 20px;
-  margin: 0 auto 50px;
-}
-
-.all-pokemon-cards.normal {
-  grid-template-columns: repeat(6, 1fr);
-}
-
-.all-pokemon-cards.hard {
-  grid-template-columns: repeat(10, 1fr);
-  margin-right: 120px;
-}
-
 img {
   width: 150px;
 }

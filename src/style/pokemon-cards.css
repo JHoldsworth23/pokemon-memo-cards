@@ -1,3 +1,21 @@
+.all-pokemon-cards {
+    display: flex;
+    flex-wrap: wrap;
+    width: clamp(480px, 45vw, 900px);
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0 auto 50px;
+}
+
+.all-pokemon-cards.normal {
+    width: clamp(480px, 50vw, 1000px);
+}
+
+.all-pokemon-cards.hard {
+    width: clamp(480px, 85vw, 1600px);
+} 
+
 .pokemon-card {
     transform-style: preserve-3d;
     transition: transform 1s;
@@ -25,3 +43,5 @@
     backface-visibility: hidden;
     transform: rotateY(180deg);
 }
+
+/* #DA8301 */
