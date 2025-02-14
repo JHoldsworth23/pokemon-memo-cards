@@ -10,3 +10,55 @@
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 1;
 }
+
+.modal {
+    background-color: #FEFEFE;
+    color: #000000;
+    width: clamp(380px, 50%, 500px);
+    padding: 24px 20px;
+    border: 6px solid #000000;
+    border-radius: 16px;
+}
+
+.modal > img {
+    width: min(95%, 500px);
+    height: auto;
+}
+
+.modal-heading {
+    font-size: 2.8rem;
+    letter-spacing: 1.2px;
+    line-height: 48px;
+    margin: 6px 0;
+}
+
+.quote {
+    width: 330px;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    text-align: center;
+    margin: 0 auto 16px;
+}
+
+#mewtwo {
+    font-size: 1.3rem;
+}
+
+.final-score {
+    font-size: 1.4rem;
+    text-decoration: underline;
+    margin: 0;
+}
+
+.final-score + p {
+    font-size: 2.4rem;
+    margin: -4px 0 16px;
+}
+
+.quote > span {
+    display: block;
+}
+
+.modal-buttons button:first-child {
+    margin-right: 24px;
+}
