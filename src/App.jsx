@@ -57,17 +57,18 @@ export default function App() {
   function checkPokemonCard(pokemonId, cards) {
     setIsFlipped(true);
 
-    if (!selectedPokemon.includes(pokemonId)) {
-      setSelectedPokemon([...selectedPokemon, pokemonId]);
-      console.log(selectedPokemon);
-    } else if (selectedPokemon.length === cards.length) {
-      setGameMode({ ...gameMode, win: true });
-      updateBestScore(selectedPokemon.length);
-      console.log('YOU WON!');
-    } else {
+    if (selectedPokemon.includes(pokemonId)) {
       setGameMode({ ...gameMode, gameOver: true });
       updateBestScore(selectedPokemon.length);
       console.log('GAME OVER');
+    } else {
+      setSelectedPokemon([...selectedPokemon, pokemonId]);
+      console.log(selectedPokemon);
+      if (selectedPokemon.length === cards.length - 1) {
+        setGameMode({ ...gameMode, win: true });
+        updateBestScore(selectedPokemon.length);
+        console.log('YOU WON!');
+      }
     }
 
     setTimeout(() => {
