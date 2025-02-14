@@ -120,7 +120,15 @@ export default function App() {
             resetGame={resetGame}
             newGame={newGame}
           />
-          {((gameMode.gameOver || gameMode.win)) && <Modal resetGame={resetGame} newGame={newGame} gameMode={gameMode} />}
+          {((gameMode.gameOver || gameMode.win)) && 
+              <Modal
+                currentScore={selectedPokemon.length}
+                maxScore={pokemon.length}
+                resetGame={resetGame} 
+                newGame={newGame} 
+                gameMode={gameMode} 
+              />
+          }
           </>
         )
       }
