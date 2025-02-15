@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
+import { useState } from "react";
 import Scoreboard from "./scoreboard";
 import PokemonCards from "./pokemon-cards";
+import GameInterfaceButtons from "./game-interface-buttons";
 import "../style/game-interface.css";
 
 export default function GameInterface({ 
@@ -11,6 +13,13 @@ export default function GameInterface({
     checkPokemonCard,
     isFlipped
 }) {
+
+    const [open, setOpen] = useState(false);
+
+    function openQuery() {
+      setOpen(!open);
+    }
+
     return (
         <>
           <Scoreboard currentScore={selectedPokemon.length} maxScore={pokemon.length} />
@@ -20,9 +29,11 @@ export default function GameInterface({
             onClick={checkPokemonCard}
             isFlipped={isFlipped}
           />
-          <button onClick={() => newGame()}>
-            NEW GAME
-          </button>
+          <GameInterfaceButtons 
+            newGame={newGame}
+            isOpen={open}
+            openQuery={openQuery}
+          />
         </>
     )
 }

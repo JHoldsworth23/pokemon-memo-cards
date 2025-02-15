@@ -69,6 +69,24 @@ p > span {
     transform: rotateY(180deg);
 }
 
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto 16px;
+}
+
+.query {
+    width: min-content;
+    border-radius: 40px;
+}
+
+.query.open {
+    width: 40%;
+    border-radius: 8px;
+}
+
 @media (max-width: 500px) {
     .all-pokemon-cards, 
     .all-pokemon-cards.normal, 
