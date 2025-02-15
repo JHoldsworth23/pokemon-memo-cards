@@ -8,7 +8,6 @@ import GitHubFooter from './components/github-footer';
 import './App.css';
 
 const apiKey = import.meta.env.POKEMON_API_KEY;
-window.localStorage.setItem('score', 0);
 
 export default function App() {
   const [loading, setLoading] = useState(true);
