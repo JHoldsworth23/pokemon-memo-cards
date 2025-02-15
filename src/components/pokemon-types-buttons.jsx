@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-import "../style/types-buttons.css";
-
 export default function PokemonTypeButtons({ onClick, types }) {
     return (
         <div className="pokemon-types">

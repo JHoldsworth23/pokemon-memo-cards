@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import DifficultyButtons from "./difficulty-buttons";
 import PokemonTypeButtons from "./pokemon-types-buttons";
+import "../style/navigation.css";
 
 // POKEMON ICONS
 import allTypes from "../assets/image/all-type.png";

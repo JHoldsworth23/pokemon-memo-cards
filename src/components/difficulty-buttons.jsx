@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-import "../style/difficulty-buttons.css";
-
 export default function DifficultyButtons({ cards, onClick, pokemonType }) {
     return (
         <div className="difficulty-container">
