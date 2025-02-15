@@ -129,7 +129,7 @@ export default function App() {
           <GameInterface 
             pokemon={pokemon}
             selectedPokemon={selectedPokemon}
-            gameMode={gameMode}
+            newGame={newGame}
             difficulty={difficulty}
             checkPokemonCard={checkPokemonCard}
             isFlipped={isFlipped}

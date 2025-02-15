@@ -1,6 +1,4 @@
 /* eslint-disable react/prop-types */
-import "../style/scoreboard.css";
-
 export default function Scoreboard({ currentScore, maxScore }) {
     const bestScore = localStorage.getItem('score');
 

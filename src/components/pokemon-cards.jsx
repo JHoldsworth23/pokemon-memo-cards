@@ -1,5 +1,4 @@
 /* eslint-disable react/prop-types */
-import '../style/pokemon-cards.css';
 import BackCard from '../assets/image/pokemon-back-card.png';
 
 export default function PokemonCards({ cards, difficulty, onClick, isFlipped }) {
