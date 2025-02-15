@@ -4,6 +4,7 @@ import Loading from './components/loading';
 import Navigation from './components/navigation';
 import GameInterface from './components/game-interface';
 import Modal from './components/modal';
+import GitHubFooter from './components/github-footer';
 import './App.css';
 
 const apiKey = import.meta.env.POKEMON_API_KEY;
@@ -146,6 +147,7 @@ export default function App() {
           </>
         )
       }
+      <GitHubFooter />
     </>
   )
 }
