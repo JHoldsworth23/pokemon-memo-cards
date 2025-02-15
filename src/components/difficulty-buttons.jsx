@@ -16,9 +16,9 @@ export default function DifficultyButtons({ cards, onClick, pokemonType }) {
             </div>
             <p>Selected Pokémon type:</p>
             <div className="selected-type-container">
-                <img src={pokemonType.icon} alt="" />
+                <img className="pokemon-type" src={pokemonType.icon} alt="" />
                 <p>{pokemonType.type ? pokemonType.type : 'All Types'}</p>
-                <img src={pokemonType.icon} alt="" />
+                <img className="pokemon-type" src={pokemonType.icon} alt="" />
             </div>
         </div>
     );
