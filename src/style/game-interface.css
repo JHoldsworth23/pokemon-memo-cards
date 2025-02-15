@@ -1,11 +1,11 @@
 .scoreboard {
     width: fit-content;
-    background-color: #FEFEFE;
+    background-color: var(--secondary-color);
     color: #1A1A1A;
     text-align: start;
-    font-size: 1.5rem;
+    font-size: var(--font-size);
     padding: 12px 30px;
-    border: 4px solid #000000;
+    border: 4px solid var(--primary-color);
     border-radius: 12px;
     margin: -18px auto 18px;
 }
@@ -21,7 +21,7 @@ p > span {
 .all-pokemon-cards {
     display: flex;
     flex-wrap: wrap;
-    width: clamp(480px, 45vw, 900px);
+    width: clamp(var(--minimum-width), 45vw, 900px);
     justify-content: center;
     align-items: center;
     gap: 10px;
@@ -29,11 +29,11 @@ p > span {
 }
 
 .all-pokemon-cards.normal {
-    width: clamp(480px, 50vw, 1000px);
+    width: clamp(var(--minimum-width), 50vw, 1000px);
 }
 
 .all-pokemon-cards.hard {
-    width: clamp(480px, 85vw, 1600px);
+    width: clamp(var(--minimum-width), 85vw, 1600px);
 } 
 
 .pokemon-card {
@@ -76,6 +76,6 @@ p > span {
         max-width: 375px; 
     }
     .front-card > img, .back-card > img {
-        width: 110px;
+        width: calc(var(--minimum-width) - 370px);
     }
 }
