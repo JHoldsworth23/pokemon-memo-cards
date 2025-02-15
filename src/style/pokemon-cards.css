@@ -48,3 +48,14 @@
     backface-visibility: hidden;
     transform: rotateY(180deg);
 }
+
+@media (max-width: 500px) {
+    .all-pokemon-cards, 
+    .all-pokemon-cards.normal, 
+    .all-pokemon-cards.hard { 
+        max-width: 375px; 
+    }
+    .front-card > img, .back-card > img {
+        width: 110px;
+    }
+}
