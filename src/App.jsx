@@ -60,14 +60,11 @@ export default function App() {
     if (selectedPokemon.includes(pokemonId)) {
       setGameMode({ ...gameMode, gameOver: true });
       updateBestScore(selectedPokemon.length);
-      console.log('GAME OVER');
     } else {
       setSelectedPokemon([...selectedPokemon, pokemonId]);
-      console.log(selectedPokemon);
       if (selectedPokemon.length === cards.length - 1) {
         setGameMode({ ...gameMode, win: true });
         updateBestScore(selectedPokemon.length);
-        console.log('YOU WON!');
       }
     }
 
@@ -94,15 +91,15 @@ export default function App() {
   function randomizePokemonType() {
     const randomPokemonTypes = [
       '', 
-      'fire', 
-      'water',
-      'grass',
-      'lightning',
-      'dragon',
-      'fighting', 
-      'darkness',
-      'metal', 
-      'psychic'
+      'Fire', 
+      'Water',
+      'Grass',
+      'Lightning',
+      'Dragon',
+      'Fighting', 
+      'Darkness',
+      'Metal', 
+      'Psychic'
     ][Math.floor(Math.random() * 10)];
     if (randomPokemonTypes === type) {
       randomizePokemonType();
