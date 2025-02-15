@@ -91,8 +91,27 @@ export default function App() {
     setSelectedPokemon([]);
   }
 
+  function randomizePokemonType() {
+    const randomPokemonTypes = [
+      '', 
+      'fire', 
+      'water',
+      'grass',
+      'lightning',
+      'dragon',
+      'fighting', 
+      'darkness',
+      'metal', 
+      'psychic'
+    ][Math.floor(Math.random() * 10)];
+    if (randomPokemonTypes === type) {
+      randomizePokemonType();
+    }
+    return randomPokemonTypes;
+  }
+
   function newGame() {
-    setType('');
+    setType(randomizePokemonType());
     setGameMode({ status: 'menu', gameOver: false, win: false });
     setSelectedPokemon([]);
   }
@@ -117,8 +136,6 @@ export default function App() {
             difficulty={difficulty}
             checkPokemonCard={checkPokemonCard}
             isFlipped={isFlipped}
-            resetGame={resetGame}
-            newGame={newGame}
           />
           {((gameMode.gameOver || gameMode.win)) && 
               <Modal
